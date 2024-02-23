@@ -29,7 +29,7 @@ public class SuperAdministrateur {
     @Column(nullable = false)
     private String password;
 
-    @jakarta.validation.constraints.Email(message = "Please enter a valid email address")
+    @Email(message = "Please enter a valid email address")
     @Column(nullable = false, unique = true)
     private String Email;
 
