@@ -8,7 +8,7 @@ public interface IServiceEmploye {
 
 
 
-    public Employe createFilm(Employe employe);
+    public Employe createEmploye(Employe employe);
     public Employe findEmployeById(Long Id);
 
     public Employe updateEmploye(Employe employe);

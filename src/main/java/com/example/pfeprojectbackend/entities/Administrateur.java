@@ -7,6 +7,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -32,6 +35,19 @@ public class Administrateur {
 
     @Email(message = "Please enter a valid email address")
     @Column(nullable = false, unique = true)
+    @NaturalId(mutable = true)
     private String Email;
+
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+
+    @ManyToOne
+    private Commentaire commentaire;
+
+
+    @ManyToOne
+    private Notification notification;
 
 }

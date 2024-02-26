@@ -16,7 +16,7 @@ public class ServiceEmploye implements IServiceEmploye{
 
 
     @Override
-    public Employe createFilm(Employe employe) {
+    public Employe createEmploye(Employe employe) {
         return employeRepository.save(employe);
     }
 

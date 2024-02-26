@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,5 +38,13 @@ public class Employe {
     @Email(message = "Please enter a valid email address")
     @Column(nullable = false, unique = true)
     private String Email;
+
+
+    @ManyToOne
+    private Commentaire commentaires;
+
+
+    @ManyToOne
+    private Notification notification;
 
 }
