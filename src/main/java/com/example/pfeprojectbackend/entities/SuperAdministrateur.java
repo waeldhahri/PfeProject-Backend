@@ -35,6 +35,6 @@ public class SuperAdministrateur {
 
 
 
-    private String KPI; 
+    private String KPI;
 
 }
