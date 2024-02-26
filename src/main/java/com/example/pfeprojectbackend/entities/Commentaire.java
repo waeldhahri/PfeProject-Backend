@@ -24,6 +24,6 @@ public class Commentaire {
     private Date Date;
 
 
-
+    @Column(nullable = false)
     private String FeedBack;
 }
