@@ -26,4 +26,6 @@ public class Notification {
     private String Message;
     @Column(nullable = false)
     private Date Date;
+
+
 }

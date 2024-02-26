@@ -2,7 +2,9 @@ package com.example.pfeprojectbackend.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +27,7 @@ public class Employe {
 
     @NotNull(message = "Identifiant cannot be empty")
     @Column(nullable = false, unique = true)
+    @NotEmpty
     private String Identifiant;
 
     @Column(nullable = false)
