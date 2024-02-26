@@ -22,4 +22,8 @@ public class Commentaire {
     private String Contenu;
     @Column(nullable = false)
     private Date Date;
+
+
+
+    private String FeedBack;
 }
