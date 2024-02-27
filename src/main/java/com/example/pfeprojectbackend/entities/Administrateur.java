@@ -24,11 +24,12 @@ public class Administrateur {
 
 
     @Column(nullable = false)
-    private String Name;
+    private String name;
 
     @NotNull(message = "Identifiant cannot be empty")
     @Column(nullable = false, unique = true)
-    private String Identifiant;
+    @NaturalId(mutable = true)
+    private String identifiant;
 
     @Column(nullable = false)
     private String password;
@@ -36,7 +37,7 @@ public class Administrateur {
     @Email(message = "Please enter a valid email address")
     @Column(nullable = false, unique = true)
     @NaturalId(mutable = true)
-    private String Email;
+    private String email;
 
 
     @Enumerated(EnumType.STRING)

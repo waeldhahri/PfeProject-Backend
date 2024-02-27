@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -26,4 +27,12 @@ public class Commentaire {
 
     @Column(nullable = false)
     private String FeedBack;
+
+
+    @ManyToMany(mappedBy = "Commentaire")
+    private List<Administrateur> administrateur;
+
+
+    @ManyToMany(mappedBy = "Commentaire")
+    private List<Employe> employes;
 }

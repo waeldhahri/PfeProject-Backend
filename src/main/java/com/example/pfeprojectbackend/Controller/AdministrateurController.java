@@ -44,8 +44,8 @@ public class AdministrateurController {
 
 
     @GetMapping("/getAdminByEmail/{Email}")
-    public Administrateur getAdministrateurByEmail(@PathVariable String Email){
-        return iServiceAdmin.findAdministrateurByEmail(Email);
+    public Administrateur getAdministrateurByEmail(@PathVariable String email){
+        return iServiceAdmin.findAdministrateurByEmail(email);
     }
 
 
