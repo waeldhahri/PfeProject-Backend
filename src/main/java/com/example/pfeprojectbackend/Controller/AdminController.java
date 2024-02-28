@@ -32,10 +32,17 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.CREATED).body(iServiceAdmin.createAdmin(administrateur));
     }
 
+    /**/
     @PutMapping("/{adminId}")
-    public Administrateur updateAdmin(@PathVariable String adminId, @Valid @RequestBody Administrateur administrateur){
+    public ResponseEntity<Administrateur> updateAdmin(@PathVariable Long adminId ){
 
-        return iServiceAdmin.updateAdministrateur(administrateur);
+        @Valid
+        Administrateur ActuelAdmin = iServiceAdmin.findAdministrateurById(adminId);
+
+
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(iServiceAdmin.updateAdministrateur(ActuelAdmin));
+
     }
 
 

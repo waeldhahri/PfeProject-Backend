@@ -16,7 +16,7 @@ public class SuperAdministrateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long superAdminId;
 
 
     @Column(nullable = false)

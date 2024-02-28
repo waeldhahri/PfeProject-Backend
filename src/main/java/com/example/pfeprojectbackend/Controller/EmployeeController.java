@@ -7,6 +7,8 @@ import com.example.pfeprojectbackend.service.IServiceEmploye;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,28 +32,30 @@ public class EmployeeController {
 
 
     @PostMapping("")
-    public Employe createEmploye(@Valid @RequestBody Employe employe){
+    public ResponseEntity<Employe> createEmploye(@Valid @RequestBody Employe employe){
 
-        return iServiceEmploye.createEmploye(employe);
+        return ResponseEntity.status(HttpStatus.CREATED).body(iServiceEmploye.createEmploye(employe));
     }
 
     @GetMapping("/{employeeId}")
-    public Employe findEmployeById(@PathVariable Long employeeId){
+    public ResponseEntity<Employe> findEmployeById(@PathVariable Long employeeId){
 
-        return iServiceEmploye.findEmployeById(employeeId);
+        return ResponseEntity.ok(iServiceEmploye.findEmployeById(employeeId));
     }
 
 
     @DeleteMapping("/{employeeId}")
-    public void deleteEmploye(@PathVariable Long employeeId){
+    public ResponseEntity<Void> deleteEmploye(@PathVariable Long employeeId){
 
 
         iServiceEmploye.deleteEmploye(iServiceEmploye.findEmployeById(employeeId));
+
+        return ResponseEntity.noContent().build();
     }
 
 
     @PutMapping("update/{employeeId}")
-    public Employe updateEmploye(@Valid @RequestBody Employe employe){
-        return iServiceEmploye.updateEmploye(employe);
+    public ResponseEntity<Employe> updateEmploye(@Valid @RequestBody Employe employe){
+        return ResponseEntity.status(HttpStatus.CREATED).body(iServiceEmploye.updateEmploye(employe));
     }
 }

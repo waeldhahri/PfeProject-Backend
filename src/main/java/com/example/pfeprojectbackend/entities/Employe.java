@@ -2,15 +2,12 @@ package com.example.pfeprojectbackend.entities;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -21,7 +18,7 @@ public class Employe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long employeeId;
 
 
     @Column(nullable = false)
@@ -41,7 +38,7 @@ public class Employe {
 
 
     @ManyToOne
-    private Commentaire commentaires;
+    private Comment commentaires;
 
 
     @ManyToOne

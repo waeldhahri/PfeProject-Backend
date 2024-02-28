@@ -9,8 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
-import java.util.List;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +18,7 @@ public class Administrateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long adminId;
 
 
     @Column(nullable = false)
@@ -45,7 +43,7 @@ public class Administrateur {
 
 
     @ManyToOne
-    private Commentaire commentaire;
+    private Comment comment;
 
 
     @ManyToOne

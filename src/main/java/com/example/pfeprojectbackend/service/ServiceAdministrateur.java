@@ -2,6 +2,7 @@ package com.example.pfeprojectbackend.service;
 
 import com.example.pfeprojectbackend.entities.Administrateur;
 import com.example.pfeprojectbackend.repository.AdministrateurRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +10,14 @@ import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class ServiceAdministrateur implements IServiceAdmin{
 
 
 
 
-    @Autowired
-    AdministrateurRepository administrateurRepository;
+
+    private final AdministrateurRepository administrateurRepository;
 
     @Override
     public Administrateur createAdmin(Administrateur administrateur) {

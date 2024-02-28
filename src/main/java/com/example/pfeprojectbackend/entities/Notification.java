@@ -19,7 +19,7 @@ public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long notifId;
 
     @Column(nullable = false)
     @NotNull

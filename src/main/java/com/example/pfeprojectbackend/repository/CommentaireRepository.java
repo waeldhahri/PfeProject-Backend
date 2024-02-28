@@ -1,17 +1,20 @@
 package com.example.pfeprojectbackend.repository;
 
-import com.example.pfeprojectbackend.entities.Administrateur;
-import com.example.pfeprojectbackend.entities.Commentaire;
-import com.example.pfeprojectbackend.entities.Employe;
+import com.example.pfeprojectbackend.entities.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
+public interface CommentaireRepository extends JpaRepository<Comment, Long> {
 
-public interface CommentaireRepository extends JpaRepository<Commentaire , Long> {
 
 
 
-    List<Commentaire> findCommentaireByAdministrateurOrEmployes(Administrateur administrateur, Employe employe);
-    List<Commentaire> findCommentaireByAdministrateur_AndId
+
+
+
+
+    List<Comment> findCommentaireByAdministrateur_adminIdOrEmployes_employeeId(Long adminId , Long employeeId);
 }

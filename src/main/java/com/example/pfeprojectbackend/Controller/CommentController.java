@@ -1,7 +1,7 @@
 package com.example.pfeprojectbackend.Controller;
 
 
-import com.example.pfeprojectbackend.entities.Commentaire;
+import com.example.pfeprojectbackend.entities.Comment;
 import com.example.pfeprojectbackend.service.IServiceCommentaire;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,20 +21,22 @@ public class CommentController {
 
 
     @GetMapping("")
-    public List<Commentaire> getAllComment(){
+    public List<Comment> getAllComment(){
         return iServiceCommentaire.findAllCommentaires();
     }
 
     @PostMapping("")
-    public Commentaire createCommentaire(Commentaire commentaire){
-        return iServiceCommentaire.createCommentaire(commentaire);
+    public Comment createCommentaire(Comment comment){
+        return iServiceCommentaire.createCommentaire(comment);
     }
 
 
-    @GetMapping("find/{adminId}/{employeeId}")
-    public List<Commentaire> findCommentaireBy(@PathVariable String adminId,@PathVariable String employeeId){
+    @GetMapping("/find/{adminId}/{employeeId}")
+    public List<Comment> findCommentaireByAdminAndEmployee(@PathVariable Long adminId, @PathVariable Long employeeId){
 
-        return iServiceCommentaire.findCommentairebyAdminOREmploye(adminId, employeeId);
+        return iServiceCommentaire.findCommentairebyAdminOREmploye(adminId, employeeId) ;
     }
+
+
 
 }

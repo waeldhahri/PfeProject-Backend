@@ -1,44 +1,44 @@
 package com.example.pfeprojectbackend.service;
 
 
-import com.example.pfeprojectbackend.entities.Administrateur;
-import com.example.pfeprojectbackend.entities.Commentaire;
-import com.example.pfeprojectbackend.entities.Employe;
+import com.example.pfeprojectbackend.entities.Comment;
 import com.example.pfeprojectbackend.repository.CommentaireRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ServiceCommentaire implements IServiceCommentaire {
 
-    @Autowired
-    CommentaireRepository commentaireRepository;
+
+    private final CommentaireRepository commentaireRepository;
 
     @Override
-    public Commentaire createCommentaire(Commentaire commentaire) {
-        return commentaireRepository.save(commentaire);
+    public Comment createCommentaire(Comment comment) {
+        return commentaireRepository.save(comment);
     }
 
     @Override
-    public Commentaire updateCommentaire(Commentaire commentaire) {
-        return commentaireRepository.save(commentaire);
+    public Comment updateCommentaire(Comment comment) {
+        return commentaireRepository.save(comment);
     }
 
     @Override
-    public List<Commentaire> findAllCommentaires() {
+    public List<Comment> findAllCommentaires() {
         return commentaireRepository.findAll();
     }
 
     @Override
-    public List<Commentaire> findCommentairebyAdminOREmploye(Administrateur administrateur, Employe employe) {
-        return commentaireRepository.findCommentaireByAdministrateurOrEmployes(administrateur,employe);
+    public List<Comment> findCommentairebyAdminOREmploye(Long adminId, Long employeId) {
+
+        return commentaireRepository.findCommentaireByAdministrateur_adminIdOrEmployes_employeeId(adminId,employeId);
     }
 
 
     @Override
-    public void deleteCommentaire(Commentaire commentaire) {
-        commentaireRepository.delete(commentaire);
+    public void deleteCommentaire(Comment comment) {
+        commentaireRepository.delete(comment);
     }
 }

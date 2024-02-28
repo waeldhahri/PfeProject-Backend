@@ -2,17 +2,18 @@ package com.example.pfeprojectbackend.service;
 
 import com.example.pfeprojectbackend.entities.Employe;
 import com.example.pfeprojectbackend.repository.EmployeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
-public class ServiceEmploye implements IServiceEmploye{
+@RequiredArgsConstructor
+public class ServiceEmployee implements IServiceEmploye{
 
-    @Autowired
-    EmployeRepository employeRepository;
+
+    private final EmployeRepository employeRepository;
 
 
     @Override

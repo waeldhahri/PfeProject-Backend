@@ -1,19 +1,17 @@
 package com.example.pfeprojectbackend.service;
 
-import com.example.pfeprojectbackend.entities.Administrateur;
-import com.example.pfeprojectbackend.entities.Commentaire;
-import com.example.pfeprojectbackend.entities.Employe;
+import com.example.pfeprojectbackend.entities.Comment;
 
 import java.util.List;
 
 public interface IServiceCommentaire {
 
-    public Commentaire createCommentaire(Commentaire commentaire);
-    public Commentaire updateCommentaire(Commentaire commentaire);
-    public List<Commentaire> findAllCommentaires();
+    public Comment createCommentaire(Comment comment);
+    public Comment updateCommentaire(Comment comment);
+    public List<Comment> findAllCommentaires();
 
-    public List<Commentaire> findCommentairebyAdminOREmploye(Administrateur administrateur, Employe employe);
-    public void deleteCommentaire(Commentaire commentaire);
+    public List<Comment> findCommentairebyAdminOREmploye(Long adminId, Long employeId);
+    public void deleteCommentaire(Comment comment);
 
 
 

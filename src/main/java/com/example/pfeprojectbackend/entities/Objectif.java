@@ -15,7 +15,7 @@ public class Objectif {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private Long objectifId;
 
         private String Description;
         private Date DateLimite;

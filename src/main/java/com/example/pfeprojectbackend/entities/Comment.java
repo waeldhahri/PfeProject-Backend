@@ -12,12 +12,12 @@ import java.util.List;
 @Entity
 @AllArgsConstructor@NoArgsConstructor
 @Data
-public class Commentaire {
+public class Comment {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long commentId;
 
     @Column(nullable = false)
     private String Contenu;
@@ -29,10 +29,12 @@ public class Commentaire {
     private String FeedBack;
 
 
-    @ManyToMany(mappedBy = "Commentaire")
+    @ManyToMany()
+
     private List<Administrateur> administrateur;
 
 
-    @ManyToMany(mappedBy = "Commentaire")
+    @ManyToMany()
+
     private List<Employe> employes;
 }
