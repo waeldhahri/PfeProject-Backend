@@ -5,6 +5,7 @@ import com.example.pfeprojectbackend.entities.Administrateur;
 import com.example.pfeprojectbackend.entities.Employe;
 import com.example.pfeprojectbackend.service.IServiceEmploye;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +13,15 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/Employe/")
+@RequiredArgsConstructor
+@RequestMapping("/employees")
 public class EmployeeController {
 
 
-    @Autowired
-    IServiceEmploye iServiceEmploye;
+    private final IServiceEmploye iServiceEmploye;
 
 
-    @GetMapping("getall")
+    @GetMapping("")
     public List<Employe> getAllEmploye(){
 
         return iServiceEmploye.getAllEmployes();
@@ -28,28 +29,28 @@ public class EmployeeController {
     }
 
 
-    @PostMapping("addEmploye")
+    @PostMapping("")
     public Employe createEmploye(@Valid @RequestBody Employe employe){
 
         return iServiceEmploye.createEmploye(employe);
     }
 
-    @GetMapping("getEmploye/{id}")
-    public Employe findEmployeById(@PathVariable Long id){
+    @GetMapping("/{employeeId}")
+    public Employe findEmployeById(@PathVariable Long employeeId){
 
-        return iServiceEmploye.findEmployeById(id);
+        return iServiceEmploye.findEmployeById(employeeId);
     }
 
 
-    @DeleteMapping("deleteEmploye/{id}")
-    public void deleteEmploye(@PathVariable Long id){
+    @DeleteMapping("/{employeeId}")
+    public void deleteEmploye(@PathVariable Long employeeId){
 
 
-        iServiceEmploye.deleteEmploye(iServiceEmploye.findEmployeById(id));
+        iServiceEmploye.deleteEmploye(iServiceEmploye.findEmployeById(employeeId));
     }
 
 
-    @PutMapping("update/{id}")
+    @PutMapping("update/{employeeId}")
     public Employe updateEmploye(@Valid @RequestBody Employe employe){
         return iServiceEmploye.updateEmploye(employe);
     }

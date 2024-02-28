@@ -5,23 +5,25 @@ package com.example.pfeprojectbackend.Controller;
 import com.example.pfeprojectbackend.entities.Objectif;
 import com.example.pfeprojectbackend.service.IServiceObjectif;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/objectif/")
+@RequestMapping("/objectifs")
+@RequiredArgsConstructor
 public class ObjectifController {
 
 
-    @Autowired
-    IServiceObjectif iServiceObjectif;
+
+    private final IServiceObjectif iServiceObjectif;
 
 
 
-    @GetMapping("getall")
+    @GetMapping("")
     public List<Objectif> getAllObjectif(){
 
         return iServiceObjectif.getAllObjectifs();
@@ -29,27 +31,27 @@ public class ObjectifController {
     }
 
 
-    @PostMapping("addEmploye")
+    @PostMapping("")
     public Objectif createEmploye(@Valid @RequestBody Objectif objectif){
 
         return iServiceObjectif.createObjectif(objectif);
     }
 
-    @GetMapping("getobjectif/{id}")
-    public Objectif findObjectifById(@PathVariable Long id){
+    @GetMapping("/{objectifId}")
+    public Objectif findObjectifById(@PathVariable Long objectifId){
 
-        return iServiceObjectif.findObjectifById(id);
+        return iServiceObjectif.findObjectifById(objectifId);
     }
 
-    @PutMapping("updateobjectif")
+    @PutMapping("/{objectifId}")
     public Objectif updateObjectif(@Valid @RequestBody Objectif objectif){
         return iServiceObjectif.updateObjectif(objectif);
     }
 
 
-    @DeleteMapping("deleteObjectif/{id}")
-    public void deleteObjectif(@PathVariable Long id){
-        iServiceObjectif.deleteObjectif(iServiceObjectif.findObjectifById(id));
+    @DeleteMapping("/{objectifId}")
+    public void deleteObjectif(@PathVariable Long objectifId){
+        iServiceObjectif.deleteObjectif(iServiceObjectif.findObjectifById(objectifId));
     }
 
 
