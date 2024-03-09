@@ -5,13 +5,16 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class SuperAdministrateur {
 
     @Id
@@ -20,19 +23,25 @@ public class SuperAdministrateur {
 
 
     @Column(nullable = false)
-    private String Name;
+    private String name;
 
     @NotNull(message = "Identifiant cannot be empty")
     @Column(nullable = false, unique = true)
-    private String Identifiant;
+    @NaturalId(mutable = true)
+    private String identifiant;
 
     @Column(nullable = false)
     private String password;
 
     @Email(message = "Please enter a valid email address")
     @Column(nullable = false, unique = true)
-    private String Email;
+    @NaturalId(mutable = true)
+    private String email;
 
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Role role;
 
 
 

@@ -18,5 +18,5 @@ public class KPI {
 
 
 
-    private String Points;
+    private String points;
 }

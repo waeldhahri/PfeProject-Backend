@@ -20,13 +20,13 @@ public class Comment {
     private Long commentId;
 
     @Column(nullable = false)
-    private String Contenu;
+    private String contenu;
     @Column(nullable = false)
-    private Date Date;
+    private Date date;
 
 
     @Column(nullable = false)
-    private String FeedBack;
+    private String feedBack;
 
 
     @ManyToMany()

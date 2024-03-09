@@ -23,9 +23,9 @@ public class Notification {
 
     @Column(nullable = false)
     @NotNull
-    private String Message;
+    private String message;
     @Column(nullable = false)
-    private Date Date;
+    private Date date;
 
 
 }
