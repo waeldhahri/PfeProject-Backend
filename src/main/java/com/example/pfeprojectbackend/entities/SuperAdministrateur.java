@@ -23,7 +23,7 @@ public class SuperAdministrateur {
 
 
     @Column(nullable = false)
-    private String name;
+    private String username;
 
     @NotNull(message = "Identifiant cannot be empty")
     @Column(nullable = false, unique = true)

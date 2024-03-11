@@ -48,15 +48,14 @@ public class Employe implements UserDetails {
     private String email;
 
 
-    @ManyToOne
-    private Comment comments;
+    //@ManyToOne
+    //private Comment comments;
 
 
-    @ManyToOne
-    private Notification notification;
+   // @ManyToOne
+   // private Notification notification;
 
     @Enumerated(EnumType.STRING)
-    @NotNull
     private Role role;
 
 
