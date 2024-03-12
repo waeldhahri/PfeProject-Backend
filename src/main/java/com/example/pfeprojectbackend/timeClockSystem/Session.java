@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,21 +24,28 @@ public class Session {
 
 
     @ManyToOne
-    @JoinColumn(name = "employe_id", nullable = false)
     private Employe employe;
 
 
     @ManyToOne
-    @JoinColumn(name = "admin_id", nullable = false)
     private Administrateur administrateur;
 
 
     @ManyToOne
-    @JoinColumn(name = "superAdmin_id", nullable = false)
     private SuperAdministrateur superAdministrateur;
 
-
+    @Column(name = "loginTime")
     private LocalDateTime loginTime;
+
+    @Column(name = "logoutTime")
     private LocalDateTime logoutTime;
+
+    @Column(name = "duration")
     private Duration duration;
+
+    @Column(name = "hours")
+    private long hours   ;
+
+    @Column(name = "minutes")
+    private long minutes;
 }

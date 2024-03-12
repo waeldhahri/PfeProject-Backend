@@ -1,6 +1,6 @@
 package com.example.pfeprojectbackend.auth;
 
-
+/*
 import com.example.pfeprojectbackend.config.Jwtservice;
 import com.example.pfeprojectbackend.entities.Employe;
 import com.example.pfeprojectbackend.entities.Role;
@@ -13,12 +13,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+
 public class AuthenticationService {
 
+    @Autowired
+    private  EmployeRepository employeRepository;
 
-    private final EmployeRepository employeRepository;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
 
     private final Jwtservice jwtservice;
     private final AuthenticationManager authenticationManager;
@@ -61,3 +63,4 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .token(jwtToken).build(); }
 }
+*/

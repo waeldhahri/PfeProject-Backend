@@ -1,6 +1,6 @@
 package com.example.pfeprojectbackend.config;
 
-
+/*
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,8 +21,10 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final Jwtservice jwtservice;
-    private final UserDetailsService userDetailsService;
+    @Autowired
+    private  Jwtservice jwtservice;
+    @Autowired
+    private  UserDetailsService userDetailsService;
 
 
 
@@ -61,4 +63,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request,response);
     }
 }
-
+*/

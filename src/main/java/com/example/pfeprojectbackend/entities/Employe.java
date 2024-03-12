@@ -1,6 +1,7 @@
 package com.example.pfeprojectbackend.entities;
 
 
+import com.example.pfeprojectbackend.timeClockSystem.Session;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -48,12 +49,16 @@ public class Employe implements UserDetails {
     private String email;
 
 
+    @ManyToOne
+    private Session session;
+
+
     //@ManyToOne
     //private Comment comments;
 
 
-   // @ManyToOne
-   // private Notification notification;
+    //@ManyToOne
+    //private Notification notification;
 
     @Enumerated(EnumType.STRING)
     private Role role;

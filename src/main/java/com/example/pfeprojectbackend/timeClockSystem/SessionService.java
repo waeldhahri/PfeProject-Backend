@@ -7,9 +7,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,7 +20,7 @@ import java.util.List;
 public class SessionService {
 
 
-
+    @Autowired
     private SessionRepository sessionRepository;
 
 
@@ -36,11 +38,28 @@ public class SessionService {
         Duration duration = Duration.between(session.getLoginTime(), session.getLogoutTime());
 
 
+
+        session.setDuration(duration);
+
+        long hours = duration.toHours();
+
+        long minutes=duration.toMinutesPart();
+
+        session.setHours(hours);
+        session.setMinutes(minutes);
+
+
         sessionRepository.save(session);
     }
 
-    public List<Session> getUserActiveSessions(Employe employe) {
-        return sessionRepository.findByEmployeAndLogoutTimeIsNull(employe);
+    public List<Session> getUserActiveSessions() {
+
+        sessionRepository.findByLogoutTimeIsNullAndLoginTimeIsNotNull();
+
+        List<Session> activeSesions = sessionRepository.findByLogoutTimeIsNullAndLoginTimeIsNotNull();
+
+        return activeSesions;
+
     }
 
 

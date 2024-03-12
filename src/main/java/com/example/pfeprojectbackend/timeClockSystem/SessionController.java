@@ -1,30 +1,39 @@
 package com.example.pfeprojectbackend.timeClockSystem;
 
 import com.example.pfeprojectbackend.entities.Employe;
+import com.example.pfeprojectbackend.repository.EmployeRepository;
 import com.example.pfeprojectbackend.service.IServiceEmploye;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@Data
 @RequestMapping("/api/sessions")
+@Data
 public class SessionController {
 
-    private SessionService sessionService;
+    @Autowired
+    private final SessionService sessionService;
 
-    private IServiceEmploye serviceEmploye;
+    @Autowired
+    private final IServiceEmploye serviceEmploye;
 
-    private SessionRepository sessionRepository;
+    @Autowired
+    private final SessionRepository sessionRepository;
+
+    @Autowired
+    private EmployeRepository employeRepository;
 
     @PostMapping("/login/{employee_Id}")
     public ResponseEntity<String> login(@PathVariable Long employee_Id) {
         // Fetch user from the database
-        Employe employe =  serviceEmploye.findEmployeById(employee_Id);
+        Employe employe =  employeRepository.findById(employee_Id).orElse(null);
 
         if (employe == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
@@ -49,6 +58,12 @@ public class SessionController {
         sessionService.endSession(session);
 
         return ResponseEntity.ok("User logged out. Session ID: " + session.getId());
+    }
+
+
+    @GetMapping("/active_sessions")
+    public ResponseEntity<List<Session>> getUserActiveSessions(){
+        return ResponseEntity.ok(sessionService.getUserActiveSessions());
     }
 
 }

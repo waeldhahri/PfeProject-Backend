@@ -1,6 +1,6 @@
 package com.example.pfeprojectbackend.auth;
 
-
+/*
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,3 +36,4 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 }
+*/

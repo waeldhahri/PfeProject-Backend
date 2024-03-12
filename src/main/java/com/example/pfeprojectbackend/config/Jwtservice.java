@@ -13,11 +13,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-
+/*
 @Service
 public class Jwtservice {
 
-
+    @Autowired
     private static  final String SECRET_KEY = "eZqjuzqqLo4tElCuVjVkqPLp1gaaHGRc8x5xHBljo4kK4dhQzChJX67pBmYRM/VScICh01PhV9l5DFq02MfMWsOsvUuAKSJu7kxUO++Meqe9+9FoGwxtsnkDH0R4l6t7qHESWAJ8iEO7ptNLDVXWBVYSTvzHCOtacQFzubJuU/jBfcWIg+t0eOLioANRzebqfZVpegbkr/xToWjs5olLMXV8kMv6vURObOvOs7pGMjdl7C44lMQeh9gYXoVdT550NxXFTDJfW5mZ/XF+eWBR1ZwDgzGw4H2oq6wSf3qOel07H5COWTJ3i07WItOeM8t6DKtzsNe8tayG2qk9J9vqvxs3CCEaM0bM9cUw4sGivfc=";
 
     public String extractUsername(String token) {
@@ -76,3 +76,4 @@ public class Jwtservice {
 
     }
 }
+*/
