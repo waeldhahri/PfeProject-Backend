@@ -24,8 +24,10 @@ public class Notification {
     @Column(nullable = false)
     @NotNull
     private String message;
+
     @Column(nullable = false)
-    private Date date;
+    @NotNull
+    private Date dateofNotif;
 
 
 }

@@ -3,6 +3,7 @@ package com.example.pfeprojectbackend.service;
 import com.example.pfeprojectbackend.entities.Administrateur;
 import com.example.pfeprojectbackend.entities.Objectif;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IServiceObjectif {
@@ -18,5 +19,9 @@ public interface IServiceObjectif {
     public List<Objectif> getAllObjectifs();
 
     public void deleteObjectif(Objectif objectif);
+
+
+
+    public void progressObjectif(Date datelimite);
 
 }

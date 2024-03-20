@@ -1,6 +1,7 @@
 package com.example.pfeprojectbackend.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,8 @@ import java.util.List;
 
 
 @Entity
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Comment {
 
@@ -20,21 +22,21 @@ public class Comment {
     private Long commentId;
 
     @Column(nullable = false)
-    private String contenu;
+    @NotNull
+    private String message;
+
     @Column(nullable = false)
-    private Date date;
+    private Date dateOfComment;
 
 
     @Column(nullable = false)
     private String feedBack;
 
 
-    @ManyToMany()
-
+    @ManyToMany
     private List<Administrateur> administrateur;
 
 
-    @ManyToMany()
-
+    @ManyToMany
     private List<Employe> employes;
 }

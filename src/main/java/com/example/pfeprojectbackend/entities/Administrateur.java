@@ -52,5 +52,9 @@ public class Administrateur {
     private Role role;
 
 
+    @Enumerated(EnumType.STRING)
+    private Bloc bloc;
+
+
 
 }

@@ -53,16 +53,18 @@ public class Employe implements UserDetails {
     private Session session;
 
 
-    //@ManyToOne
-    //private Comment comments;
+    @ManyToOne
+    private Comment comments;
 
 
-    //@ManyToOne
-    //private Notification notification;
+    @ManyToOne
+    private Notification notification;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Enumerated(EnumType.STRING)
+    private Bloc bloc;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
