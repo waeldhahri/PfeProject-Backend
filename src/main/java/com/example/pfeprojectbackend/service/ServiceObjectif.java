@@ -40,7 +40,7 @@ public class ServiceObjectif implements IServiceObjectif {
 
     @Override
     public List<Objectif> getAllObjectifs() {
-        return null;
+        return objectifRepository.findAll();
     }
 
     @Override

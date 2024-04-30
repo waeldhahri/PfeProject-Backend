@@ -10,6 +10,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,6 +44,9 @@ public class SuperAdministrateur {
     @Enumerated(EnumType.STRING)
     @NotNull
     private Role role;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<com.example.pfeprojectbackend.newJWT.Role> roles;
 
 
 

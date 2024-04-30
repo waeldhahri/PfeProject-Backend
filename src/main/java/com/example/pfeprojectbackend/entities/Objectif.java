@@ -18,13 +18,22 @@ public class Objectif {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long objectifId;
 
+
+
+        private String objectifTitle;
+
+        private String objectifType;
+
+        private Date objectifStart;
+
         @NotNull
-        private String Description;
+        private String description;
 
-        private Date DateLimite;
+        private Date dateLimite;
 
+        /*
         @Enumerated(EnumType.STRING)
-        private Etat Etat;
+        private Etat etat;
 
-
+*/
 }

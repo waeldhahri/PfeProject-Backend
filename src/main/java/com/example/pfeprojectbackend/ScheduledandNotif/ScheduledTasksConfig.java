@@ -22,7 +22,7 @@ public class ScheduledTasksConfig {
     @Scheduled(cron = "0 0 9 * * MON-FRI")
     public void sendProgressUpdateAlert(){
 
-            serviceObjectif.sendProgressUpdateAlert();
+           // serviceObjectif.sendProgressUpdateAlert();
     }
 
 

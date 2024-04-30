@@ -30,6 +30,13 @@ public class ObjectifController {
 
     }
 
+    @GetMapping("/datelimite")
+    public List<Objectif> getAlldateLimites(){
+
+        return iServiceObjectif.getAllObjectifs();
+    }
+
+
 
     @PostMapping("")
     public Objectif createEmploye(@Valid @RequestBody Objectif objectif){

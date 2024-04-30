@@ -1,6 +1,7 @@
 package com.example.pfeprojectbackend.entities;
 
 
+import com.example.pfeprojectbackend.newJWT.Role;
 import com.example.pfeprojectbackend.timeClockSystem.Session;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -11,19 +12,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Employe implements UserDetails {
+@Table(name = "_employe")
+@EntityListeners(AuditingEntityListener.class)
+public class Employe implements UserDetails , Principal {
 
 
     @Id
@@ -49,6 +58,10 @@ public class Employe implements UserDetails {
     private String email;
 
 
+    private boolean accountLocked;
+    private boolean enabled;
+
+
     @ManyToOne
     private Session session;
 
@@ -56,19 +69,30 @@ public class Employe implements UserDetails {
     @ManyToOne
     private Comment comments;
 
+    @CreatedDate
+    @Column(nullable = false,updatable = false)
+    private LocalDateTime createDate;
+
+    @LastModifiedDate
+    @Column(insertable = false)
+    private LocalDateTime lastModifiedDate;
 
     @ManyToOne
     private Notification notification;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    //@Enumerated(EnumType.STRING)
+   // private Role role;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
 
     @Enumerated(EnumType.STRING)
     private Bloc bloc;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return this.roles.stream().map(r-> new SimpleGrantedAuthority(r.getName()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -89,7 +113,7 @@ public class Employe implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !accountLocked;
     }
 
     @Override
@@ -99,6 +123,11 @@ public class Employe implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
+    }
+
+    @Override
+    public String getName() {
+        return username;
     }
 }

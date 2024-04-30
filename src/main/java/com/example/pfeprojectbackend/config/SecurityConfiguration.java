@@ -1,5 +1,5 @@
 package com.example.pfeprojectbackend.config;
-
+/*
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-
+*/
 /*  @Autowired
     private final JwtAuthenticationFilter jwtAuthFilter;
-*/
+*//*
         @Autowired
    // private final AuthenticationProvider authenticationProvider;
 
@@ -44,3 +44,4 @@ public class SecurityConfiguration {
 
     }
 }
+*/
