@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 @Configuration
 @EnableScheduling
-
 @RequiredArgsConstructor
 public class ScheduledTasksConfig {
 

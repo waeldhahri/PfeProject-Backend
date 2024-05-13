@@ -62,8 +62,8 @@ public class Employe implements UserDetails , Principal {
     private boolean enabled;
 
 
-    @ManyToOne
-    private Session session;
+    @OneToMany(mappedBy = "employe")
+    private List<Session> session;
 
 
     @ManyToOne

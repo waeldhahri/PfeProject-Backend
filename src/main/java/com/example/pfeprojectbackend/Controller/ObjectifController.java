@@ -3,10 +3,13 @@ package com.example.pfeprojectbackend.Controller;
 
 
 import com.example.pfeprojectbackend.entities.Objectif;
+import com.example.pfeprojectbackend.repository.ObjectifRepository;
 import com.example.pfeprojectbackend.service.IServiceObjectif;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +24,15 @@ public class ObjectifController {
 
     private final IServiceObjectif iServiceObjectif;
 
+    private final ObjectifRepository objectifRepository;
 
+
+
+
+    @GetMapping("/page")
+    public Page<Objectif> getAllObjectifs(Pageable pageable){
+        return objectifRepository.findAll(pageable);
+    }
 
     @GetMapping("")
     public List<Objectif> getAllObjectif(){

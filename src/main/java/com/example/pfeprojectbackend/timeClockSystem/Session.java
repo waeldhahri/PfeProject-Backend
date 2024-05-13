@@ -24,14 +24,18 @@ public class Session {
 
 
     @ManyToOne
+    @JoinColumn(columnDefinition = "session", name = "employee_id")
     private Employe employe;
 
 
+
     @ManyToOne
+    @JoinColumn(columnDefinition = "session", name = "administrateur_id")
     private Administrateur administrateur;
 
 
     @ManyToOne
+    @JoinColumn(columnDefinition = "session", name = "superadministrateur_id")
     private SuperAdministrateur superAdministrateur;
 
     @Column(name = "loginTime")
