@@ -1,6 +1,7 @@
 package com.example.pfeprojectbackend.entities;
 
 
+import com.example.pfeprojectbackend.timeClockSystem.Session;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -41,12 +42,12 @@ public class Administrateur {
     @NaturalId(mutable = true)
     private String email;
 
-    @ManyToOne
-    private Comment comment;
+    @OneToMany
+    private List<Comment> comment;
 
 
-    @ManyToOne
-    private Notification notification;
+    @OneToMany
+    private List<Notification> notification;
 
 
     @Enumerated(EnumType.STRING)
@@ -63,6 +64,10 @@ public class Administrateur {
     private List<com.example.pfeprojectbackend.newJWT.Role> roles;
 
 
+    @OneToMany(mappedBy = "administrateur")
+    private List<Session> session;
 
+    @ManyToMany
+    private List<Objectif> objectifs;
 
 }

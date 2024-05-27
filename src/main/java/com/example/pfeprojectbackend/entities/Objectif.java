@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -36,4 +37,15 @@ public class Objectif {
         private Etat etat;
 
 */
+        @ManyToMany
+        private List<Employe> employe;
+
+        @ManyToMany
+        private List<Administrateur> administrateurs;
+
+        @ManyToMany
+        private List<SuperAdministrateur> superAdministrateurs;
+
+
+
 }

@@ -39,7 +39,7 @@ public class AuthenticationService {
 
     public void register(RegistrartionRequest request) throws MessagingException {
 
-        var userRole = roleRepository.findByName("USER")
+        var userRole = roleRepository.findByName(request.getRole())
                 .orElseThrow(()-> new IllegalStateException("ROLE USER was not found"));
         var user = Employe.builder()
                 .username(request.getUsername())
@@ -47,8 +47,8 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .accountLocked(false)
-                .enabled(false)
-                .roles(List.of(userRole))
+                .enabled(true)
+                .roles(userRole)
                 .build();
 
         employeRepository.save(user);

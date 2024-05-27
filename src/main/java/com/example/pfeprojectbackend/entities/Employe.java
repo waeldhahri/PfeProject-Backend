@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -66,8 +67,8 @@ public class Employe implements UserDetails , Principal {
     private List<Session> session;
 
 
-    @ManyToOne
-    private Comment comments;
+    @OneToMany
+    private List<Comment> comments;
 
     @CreatedDate
     @Column(nullable = false,updatable = false)
@@ -77,21 +78,25 @@ public class Employe implements UserDetails , Principal {
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
 
-    @ManyToOne
-    private Notification notification;
+    @OneToMany
+    private List<Notification> notification;
+
+    @ManyToMany
+    private List<Objectif> objectifs;
 
     //@Enumerated(EnumType.STRING)
    // private Role role;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role", columnDefinition = "employes")
+    private Role roles;
 
     @Enumerated(EnumType.STRING)
     private Bloc bloc;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream().map(r-> new SimpleGrantedAuthority(r.getName()))
+        return Arrays.asList(roles).stream().map(r-> new SimpleGrantedAuthority(r.getName()))
                 .collect(Collectors.toList());
     }
 

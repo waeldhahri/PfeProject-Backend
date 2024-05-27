@@ -30,4 +30,8 @@ public class RegistrartionRequest {
     @Email(message = "Please enter a valid email address")
     private String email;
 
+    @NotNull
+    @NotEmpty(message = "role cannot be empty")
+    private String role;
+
 }

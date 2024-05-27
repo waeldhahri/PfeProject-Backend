@@ -36,10 +36,10 @@ public class JwtFilter extends OncePerRequestFilter {
                                     @NonNull FilterChain filterChain) throws ServletException,
             IOException {
 
-            if (request.getServletPath().contains("/")){
+/*            if (!request.getServletPath().contains("/")){
                 filterChain.doFilter(request,response);
                 return;
-            }
+            }*/
 
             final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
             final String jwt;

@@ -1,6 +1,7 @@
 package com.example.pfeprojectbackend.entities;
 
 
+import com.example.pfeprojectbackend.timeClockSystem.Session;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -50,5 +51,11 @@ public class SuperAdministrateur {
 
 
 
+    @OneToMany(mappedBy = "superAdministrateur")
+    private List<Session> session;
+
+
+    @ManyToMany
+    private List<Objectif> objectifs;
 
 }

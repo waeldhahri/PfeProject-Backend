@@ -34,11 +34,14 @@ public class Comment {
     private String feedBack;
 
 
-    @ManyToMany
-    private List<Administrateur> administrateur;
-
-
-    @ManyToMany
+    @ManyToOne
     @JsonIgnore
-    private List<Employe> employes;
+    @JoinColumn(name = "administrateur_id", nullable = false , insertable = false , updatable = false)
+    private Administrateur administrateur;
+
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "employe_id", nullable = false , insertable = false , updatable = false)
+    private Employe employes;
 }

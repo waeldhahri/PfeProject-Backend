@@ -30,4 +30,14 @@ public class Notification {
     private Date dateofNotif;
 
 
+    @ManyToOne
+    @JoinColumn(name ="employe_id", nullable = false , insertable = false , updatable = false)
+    private Employe employe;
+
+    @ManyToOne
+    @JoinColumn(name = "administrateur_id", nullable = false , insertable = false ,
+    updatable = false)
+    private Administrateur administrateur;
+
+
 }

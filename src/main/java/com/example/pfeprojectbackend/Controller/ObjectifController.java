@@ -69,6 +69,7 @@ public class ObjectifController {
 
     @DeleteMapping("/{objectifId}")
     public void deleteObjectif(@PathVariable Long objectifId){
+
         iServiceObjectif.deleteObjectif(iServiceObjectif.findObjectifById(objectifId));
     }
 

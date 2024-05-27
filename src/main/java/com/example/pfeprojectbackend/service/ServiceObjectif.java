@@ -46,6 +46,8 @@ public class ServiceObjectif implements IServiceObjectif {
     @Override
     public void deleteObjectif(Objectif objectif) {
 
+        objectifRepository.delete(objectif);
+
     }
 
     @Override

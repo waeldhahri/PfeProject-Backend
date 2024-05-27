@@ -21,13 +21,13 @@ import java.util.List;
 public class Role {
     @Id
     @GeneratedValue
-    private Integer Id;
+    private Long Id;
 
     @Column(unique = true)
     private String name;
 
 
-    @ManyToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "roles")
     @JsonIgnore
     private List<Employe> employes;
 

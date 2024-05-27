@@ -34,9 +34,12 @@ public class Session {
     private Administrateur administrateur;
 
 
+
     @ManyToOne
     @JoinColumn(columnDefinition = "session", name = "superadministrateur_id")
     private SuperAdministrateur superAdministrateur;
+
+
 
     @Column(name = "loginTime")
     private LocalDateTime loginTime;
