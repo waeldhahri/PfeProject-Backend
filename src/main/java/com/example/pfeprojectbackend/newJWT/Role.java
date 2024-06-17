@@ -2,6 +2,7 @@ package com.example.pfeprojectbackend.newJWT;
 
 import com.example.pfeprojectbackend.entities.Employe;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -28,7 +29,7 @@ public class Role {
 
 
     @OneToMany(mappedBy = "roles")
-    @JsonIgnore
+    //@JsonIgnoreProperties("roles")
     private List<Employe> employes;
 
     @CreatedDate

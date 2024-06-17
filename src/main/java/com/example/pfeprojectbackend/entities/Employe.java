@@ -3,6 +3,8 @@ package com.example.pfeprojectbackend.entities;
 
 import com.example.pfeprojectbackend.newJWT.Role;
 import com.example.pfeprojectbackend.timeClockSystem.Session;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -78,17 +80,17 @@ public class Employe implements UserDetails , Principal {
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
 
-    @OneToMany
+    @OneToMany(mappedBy = "employe")
+    //@JsonIgnoreProperties("employe")
     private List<Notification> notification;
 
     @ManyToMany
     private List<Objectif> objectifs;
 
-    //@Enumerated(EnumType.STRING)
-   // private Role role;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role", columnDefinition = "employes")
+    @JoinColumn(name = "role")
+    @JsonIgnoreProperties("employes")
     private Role roles;
 
     @Enumerated(EnumType.STRING)

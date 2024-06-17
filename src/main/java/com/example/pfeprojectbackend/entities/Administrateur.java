@@ -2,6 +2,7 @@ package com.example.pfeprojectbackend.entities;
 
 
 import com.example.pfeprojectbackend.timeClockSystem.Session;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -46,13 +47,12 @@ public class Administrateur {
     private List<Comment> comment;
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "administrateur")
+    //@JsonIgnoreProperties("administrateur")
     private List<Notification> notification;
 
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private Role role;
+
 
 
     @Enumerated(EnumType.STRING)
@@ -65,6 +65,7 @@ public class Administrateur {
 
 
     @OneToMany(mappedBy = "administrateur")
+    //@JsonIgnoreProperties("administrateur")
     private List<Session> session;
 
     @ManyToMany

@@ -41,4 +41,9 @@ public class ServiceEmployee implements IServiceEmploye{
         employeRepository.delete(employe);
 
     }
+
+    @Override
+    public Employe findEmployeByEmail(String email) {
+        return employeRepository.findByEmail(email).isPresent() ? employeRepository.findByEmail(email).get() : null ;
+    }
 }

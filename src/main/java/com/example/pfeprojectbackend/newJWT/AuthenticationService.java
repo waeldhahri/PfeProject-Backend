@@ -45,7 +45,7 @@ public class AuthenticationService {
                 .username(request.getUsername())
                 .identifiant(request.getIdentifiant())
                 .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
+                .password(passwordEncoder.encode(request.getIdentifiant()))
                 .accountLocked(false)
                 .enabled(true)
                 .roles(userRole)

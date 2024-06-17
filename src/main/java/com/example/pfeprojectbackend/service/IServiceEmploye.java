@@ -18,5 +18,5 @@ public interface IServiceEmploye {
     public void deleteEmploye(Employe employe);
 
 
-
+    Employe findEmployeByEmail(String email);
 }

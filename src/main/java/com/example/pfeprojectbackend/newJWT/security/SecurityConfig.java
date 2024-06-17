@@ -33,7 +33,8 @@ public class SecurityConfig {
                         req.requestMatchers(
                                 "/auth/authenticate","/auth/register"
 
-                        ).permitAll().anyRequest().authenticated()
+                        ).permitAll()
+                                .anyRequest().authenticated()
                 ).sessionManagement(session->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)

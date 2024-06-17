@@ -42,9 +42,7 @@ public class SuperAdministrateur {
     private String email;
 
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private Role role;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<com.example.pfeprojectbackend.newJWT.Role> roles;

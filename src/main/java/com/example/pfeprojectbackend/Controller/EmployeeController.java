@@ -30,6 +30,11 @@ public class EmployeeController {
 
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Employe> getEmployeByEmail(@PathVariable String email){
+        return ResponseEntity.ok(iServiceEmploye.findEmployeByEmail(email));
+    }
+
 
     @PostMapping("")
     public ResponseEntity<Employe> createEmploye(@Valid @RequestBody Employe employe){
