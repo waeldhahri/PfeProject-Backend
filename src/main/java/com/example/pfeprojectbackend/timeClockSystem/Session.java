@@ -3,6 +3,7 @@ package com.example.pfeprojectbackend.timeClockSystem;
 import com.example.pfeprojectbackend.entities.Administrateur;
 import com.example.pfeprojectbackend.entities.Employe;
 import com.example.pfeprojectbackend.entities.SuperAdministrateur;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class Session {
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
+    @JsonIgnoreProperties("session")
     private Employe employe;
 
 

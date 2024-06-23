@@ -1,6 +1,7 @@
 package com.example.pfeprojectbackend.service;
 
 import com.example.pfeprojectbackend.entities.Employe;
+import com.example.pfeprojectbackend.newJWT.Role;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface IServiceEmploye {
 
 
     Employe findEmployeByEmail(String email);
+
+
+    List<Employe> findEmployeByRole(String roleName);
 }

@@ -27,6 +27,8 @@ public class Objectif {
 
         private Date objectifStart;
 
+        private String assigned;
+
         @NotNull
         private String description;
 

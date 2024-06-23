@@ -1,11 +1,14 @@
 package com.example.pfeprojectbackend.service;
 
 import com.example.pfeprojectbackend.entities.Employe;
+import com.example.pfeprojectbackend.newJWT.Role;
+import com.example.pfeprojectbackend.newJWT.RoleRepository;
 import com.example.pfeprojectbackend.repository.EmployeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -14,6 +17,7 @@ public class ServiceEmployee implements IServiceEmploye{
 
 
     private final EmployeRepository employeRepository;
+    private final RoleRepository roleRepository;
 
 
     @Override
@@ -45,5 +49,15 @@ public class ServiceEmployee implements IServiceEmploye{
     @Override
     public Employe findEmployeByEmail(String email) {
         return employeRepository.findByEmail(email).isPresent() ? employeRepository.findByEmail(email).get() : null ;
+    }
+
+   @Override
+    public List<Employe> findEmployeByRole(String roleName) {
+        Optional<Role> role = roleRepository.findByName(roleName);
+        if (role.isPresent()) {
+            return employeRepository.findByRoles(role);
+        } else {
+            throw new IllegalArgumentException("Role not found");
+        }
     }
 }

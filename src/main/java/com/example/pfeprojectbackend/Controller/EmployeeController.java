@@ -3,6 +3,8 @@ package com.example.pfeprojectbackend.Controller;
 
 import com.example.pfeprojectbackend.entities.Administrateur;
 import com.example.pfeprojectbackend.entities.Employe;
+import com.example.pfeprojectbackend.newJWT.Role;
+import com.example.pfeprojectbackend.repository.EmployeRepository;
 import com.example.pfeprojectbackend.service.IServiceEmploye;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class EmployeeController {
 
 
     private final IServiceEmploye iServiceEmploye;
+    private final EmployeRepository employeRepository;
 
 
     @GetMapping("")
@@ -35,6 +38,12 @@ public class EmployeeController {
         return ResponseEntity.ok(iServiceEmploye.findEmployeByEmail(email));
     }
 
+
+
+   @GetMapping("/role/{roleName}")
+    public List<Employe> getEmployesByRole(@PathVariable String roleName) {
+        return iServiceEmploye.findEmployeByRole(roleName);
+    }
 
     @PostMapping("")
     public ResponseEntity<Employe> createEmploye(@Valid @RequestBody Employe employe){

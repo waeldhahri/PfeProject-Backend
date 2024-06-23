@@ -31,33 +31,33 @@ public class SessionController {
     private EmployeRepository employeRepository;
 
     @PostMapping("/login/{employee_Id}")
-    public ResponseEntity<String> login(@PathVariable Long employee_Id) {
+    public ResponseEntity<Long> login(@PathVariable Long employee_Id) {
         // Fetch user from the database
         Employe employe =  employeRepository.findById(employee_Id).orElse(null);
 
         if (employe == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
 
         // Create a new session for login
         Session session = sessionService.createSession(employe);
 
-        return ResponseEntity.ok("User logged in. Session ID: " + session.getId());
+        return ResponseEntity.ok(session.getId());
     }
 
-    @PostMapping("/logout/{sessionId}")
-    public ResponseEntity<String> logout(@PathVariable Long sessionId) {
+    @PutMapping("/logout/{sessionId}")
+    public ResponseEntity<Long> logout(@PathVariable Long sessionId) {
         // Fetch session from the database
         Session session = sessionService.findById(sessionId);
 
         if (session == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Session not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
 
         // End the session for logout
         sessionService.endSession(session);
 
-        return ResponseEntity.ok("User logged out. Session ID: " + session.getId());
+        return ResponseEntity.ok(session.getId());
     }
 
 
