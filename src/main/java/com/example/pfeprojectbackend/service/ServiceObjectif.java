@@ -37,7 +37,7 @@ public class ServiceObjectif implements IServiceObjectif {
 
     @Override
     public Objectif updateObjectif(Objectif objectif) {
-        return null;
+        return objectifRepository.save(objectif);
     }
 
     @Override

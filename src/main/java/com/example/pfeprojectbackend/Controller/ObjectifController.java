@@ -64,7 +64,8 @@ public class ObjectifController {
     }
 
     @PutMapping("/{objectifId}")
-    public Objectif updateObjectif(@Valid @RequestBody Objectif objectif){
+    public Objectif updateObjectif(@PathVariable Long objectifId, @Valid @RequestBody Objectif objectif){
+        objectif.setObjectifId(objectifId);
         return iServiceObjectif.updateObjectif(objectif);
     }
 

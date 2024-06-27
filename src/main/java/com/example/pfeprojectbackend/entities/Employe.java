@@ -52,7 +52,7 @@ public class Employe implements UserDetails , Principal {
     @NaturalId(mutable = true)
     private String identifiant;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
     @Email(message = "Please enter a valid email address")

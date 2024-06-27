@@ -79,7 +79,7 @@ public class EmployeeController {
 
     @PutMapping("update/{employeeId}")
     public ResponseEntity<Employe> updateEmploye(@Valid @RequestBody Employe employe, @PathVariable Long employeeId ){
-
+        employe.setEmployeeId(employeeId);
         return ResponseEntity.status(HttpStatus.CREATED).body(iServiceEmploye.updateEmploye(employe));
     }
 }
