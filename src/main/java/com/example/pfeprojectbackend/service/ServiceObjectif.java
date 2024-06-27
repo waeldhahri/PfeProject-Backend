@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ServiceObjectif implements IServiceObjectif {
@@ -40,7 +42,10 @@ public class ServiceObjectif implements IServiceObjectif {
 
     @Override
     public List<Objectif> getAllObjectifs() {
-        return objectifRepository.findAll();
+        return objectifRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparingLong(Objectif::getObjectifId).reversed())
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -93,8 +93,8 @@ public class Employe implements UserDetails , Principal {
     @JsonIgnoreProperties("employes")
     private Role roles;
 
-    @Enumerated(EnumType.STRING)
-    private Bloc bloc;
+
+    private String bloc2;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

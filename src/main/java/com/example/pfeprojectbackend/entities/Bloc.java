@@ -3,5 +3,5 @@ package com.example.pfeprojectbackend.entities;
 public enum Bloc {
 
 
-    BLOCA , BLOCB , BLOCC
+    LTN2 , LTN3 , LTN4, LTN5 , LTN6
 }

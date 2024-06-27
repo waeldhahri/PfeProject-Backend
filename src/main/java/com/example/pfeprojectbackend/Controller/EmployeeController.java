@@ -4,8 +4,11 @@ package com.example.pfeprojectbackend.Controller;
 import com.example.pfeprojectbackend.entities.Administrateur;
 import com.example.pfeprojectbackend.entities.Employe;
 import com.example.pfeprojectbackend.newJWT.Role;
+import com.example.pfeprojectbackend.newJWT.TokenRepository;
 import com.example.pfeprojectbackend.repository.EmployeRepository;
 import com.example.pfeprojectbackend.service.IServiceEmploye;
+import com.example.pfeprojectbackend.timeClockSystem.SessionRepository;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ public class EmployeeController {
 
     private final IServiceEmploye iServiceEmploye;
     private final EmployeRepository employeRepository;
+    private final TokenRepository tokenRepository;
+    private final SessionRepository sessionRepository;
 
 
     @GetMapping("")
@@ -59,8 +64,12 @@ public class EmployeeController {
 
 
     @DeleteMapping("/{employeeId}")
+    @Transactional
     public ResponseEntity<Void> deleteEmploye(@PathVariable Long employeeId){
 
+        tokenRepository.clearEmployeeReferences(employeeId);
+
+        sessionRepository.clearEmployeeReferences(employeeId);
 
         iServiceEmploye.deleteEmploye(iServiceEmploye.findEmployeById(employeeId));
 
@@ -69,7 +78,8 @@ public class EmployeeController {
 
 
     @PutMapping("update/{employeeId}")
-    public ResponseEntity<Employe> updateEmploye(@Valid @RequestBody Employe employe){
+    public ResponseEntity<Employe> updateEmploye(@Valid @RequestBody Employe employe, @PathVariable Long employeeId ){
+
         return ResponseEntity.status(HttpStatus.CREATED).body(iServiceEmploye.updateEmploye(employe));
     }
 }

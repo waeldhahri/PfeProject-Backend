@@ -31,7 +31,9 @@ public class ObjectifController {
 
     @GetMapping("/page")
     public Page<Objectif> getAllObjectifs(Pageable pageable){
-        return objectifRepository.findAll(pageable);
+        //return objectifRepository.findAll(pageable);
+
+        return objectifRepository.findAllByOrderByObjectifIdDesc(pageable);
     }
 
     @GetMapping("")

@@ -7,8 +7,10 @@ import com.example.pfeprojectbackend.repository.EmployeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -32,12 +34,15 @@ public class ServiceEmployee implements IServiceEmploye{
 
     @Override
     public Employe updateEmploye(Employe employe) {
+
         return employeRepository.save(employe);
     }
 
     @Override
     public List<Employe> getAllEmployes() {
-        return employeRepository.findAll();
+        return employeRepository.findAll().stream()
+                .sorted(Comparator.comparingLong(Employe::getEmployeeId).reversed())
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -55,7 +60,10 @@ public class ServiceEmployee implements IServiceEmploye{
     public List<Employe> findEmployeByRole(String roleName) {
         Optional<Role> role = roleRepository.findByName(roleName);
         if (role.isPresent()) {
-            return employeRepository.findByRoles(role);
+            return employeRepository.findByRoles(role)
+                    .stream()
+                    .sorted(Comparator.comparingLong(Employe::getEmployeeId).reversed())
+                    .collect(Collectors.toList());
         } else {
             throw new IllegalArgumentException("Role not found");
         }

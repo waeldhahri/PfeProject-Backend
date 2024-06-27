@@ -46,6 +46,7 @@ public class AuthenticationService {
                 .identifiant(request.getIdentifiant())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getIdentifiant()))
+                .bloc2(request.getBloc2())
                 .accountLocked(false)
                 .enabled(true)
                 .roles(userRole)

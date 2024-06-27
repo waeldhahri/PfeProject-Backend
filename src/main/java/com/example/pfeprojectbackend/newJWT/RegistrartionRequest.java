@@ -34,4 +34,6 @@ public class RegistrartionRequest {
     @NotEmpty(message = "role cannot be empty")
     private String role;
 
+    private String bloc2 ;
+
 }
